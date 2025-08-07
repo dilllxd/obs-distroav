@@ -2,7 +2,6 @@ FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# --- Base Dependencies ---
 RUN apt-get update && apt-get install -y --no-install-recommends \
     software-properties-common \
     curl wget gnupg2 ca-certificates lsb-release sudo \
@@ -13,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     mesa-utils xinit xserver-xorg-input-all \
     dbus-x11 avahi-daemon ffmpeg pulseaudio \
     libva2 libva-x11-2 libva-drm2 va-driver-all libdrm2 libdrm-amdgpu1 libvulkan1 \
-    mesa-vulkan-drivers libva-mesa-driver vainfo
+    mesa-vulkan-drivers mesa-va-drivers vainfo
     
 # --- OBS Studio ---
 RUN add-apt-repository -y ppa:obsproject/obs-studio && apt-get update && \
