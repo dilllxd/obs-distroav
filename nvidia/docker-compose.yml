@@ -1,0 +1,26 @@
+services:
+  obs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: obs-container
+    network_mode: host
+    # Enable NVIDIA GPUs via Compose device_requests
+    device_requests:
+      - driver: nvidia
+        count: all
+        capabilities: [gpu, compute, utility, video]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility,graphics
+    shm_size: 512m
+    volumes:
+      - ../obs-config:/root/.config/obs-studio
+    stdin_open: true
+    tty: true
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -x obs >/dev/null && curl -fsS http://localhost:6081/ >/dev/null"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s

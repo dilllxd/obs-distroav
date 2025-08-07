@@ -11,8 +11,9 @@ RUN apt-get update && apt-get install -y \
     python3 python3-websockify net-tools \
     libglib2.0-0 libsm6 libxrender1 libxext6 \
     mesa-utils xinit xserver-xorg-input-all \
-    dbus-x11 avahi-daemon ffmpeg pulseaudio \
-    libva-glx2 va-driver-all libva-drm2 libdrm2 libdrm-amdgpu1 libvulkan1 mesa-vulkan-drivers libva-mesa-driver vainfo
+    dbus-x11 avahi-daemon ffmpeg pulseaudio && rm -rf /var/lib/apt/lists/*
+
+# NVIDIA: rely on host driver via NVIDIA Container Toolkit; no driver install here.
 
 # --- OBS Studio ---
 RUN add-apt-repository -y ppa:obsproject/obs-studio && apt-get update && \

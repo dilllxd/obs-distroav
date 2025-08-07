@@ -18,20 +18,11 @@ dump_debug() {
     log "glxinfo -B:"; glxinfo -B 2>/dev/null || true
     log "xrandr outputs:"; xrandr 2>/dev/null || true
   fi
-  command -v vainfo >/dev/null 2>&1 && { log "vainfo (summary):"; vainfo 2>/dev/null | head -n 50 || true; }
   log "Listening ports:"; netstat -tuln 2>/dev/null || true
   log "Process tree:"; ps -eo pid,ppid,cmd --forest || true
 }
 
-cleanup() {
-  log "Cleaning up..."
-  pkill -TERM -P $$ || true
-  if [[ -n "${X_PID:-}" ]] && kill -0 "$X_PID" 2>/dev/null; then
-    log "Stopping X server $X_PID"; kill -TERM "$X_PID" || true
-  fi
-  exit 0
-}
-
+cleanup() { log "Cleaning up..."; pkill -TERM -P $$ || true; if [[ -n "${X_PID:-}" ]] && kill -0 "$X_PID" 2>/dev/null; then log "Stopping X server $X_PID"; kill -TERM "$X_PID" || true; fi; exit 0; }
 err_trap() { local ec=$?; log "Error: ${BASH_COMMAND} (exit $ec)"; dump_debug || true; exit $ec; }
 trap cleanup SIGINT SIGTERM
 trap err_trap ERR
