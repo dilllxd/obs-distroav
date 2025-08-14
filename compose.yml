@@ -1,7 +1,7 @@
 services:
   obs-intel:
     profiles: ["intel"]
-    image: ghcr.io/dilllxd/obs-distroav:intel
+    image: ghcr.io/dilllxd/obs-distroav:intel-teb-vertical
     container_name: obs-intel
     network_mode: host
     devices:
@@ -24,7 +24,7 @@ services:
 
   obs-amd:
     profiles: ["amd"]
-    image: ghcr.io/dilllxd/obs-distroav:amd
+    image: ghcr.io/dilllxd/obs-distroav:amd-teb-vertical
     container_name: obs-amd
     network_mode: host
     devices:
@@ -47,7 +47,7 @@ services:
 
   obs-nvidia:
     profiles: ["nvidia"]
-    image: ghcr.io/dilllxd/obs-distroav:nvidia
+    image: ghcr.io/dilllxd/obs-distroav:nvidia-teb-vertical
     container_name: obs-nvidia
     network_mode: host
     device_requests:

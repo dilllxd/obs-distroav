@@ -47,6 +47,6 @@ jobs:
           push: true
           platforms: linux/amd64
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.vendor }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.vendor }}-teb-vertical
           cache-from: type=gha
           cache-to: type=gha,mode=max

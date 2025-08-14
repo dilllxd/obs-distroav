@@ -29,6 +29,11 @@ RUN wget https://raw.githubusercontent.com/DistroAV/DistroAV/refs/heads/master/C
     ./libndi-get.sh install && \
     rm libndi-get.sh
 
+# --- Vertical Canvas Plugin ---
+RUN wget https://github.com/Aitum/obs-vertical-canvas/releases/download/1.6.0-beta1/vertical-canvas-linux-gnu.deb -O vertical-canvas.deb && \
+    dpkg -i vertical-canvas.deb || apt-get install -f -y && \
+    rm vertical-canvas.deb && rm -rf /var/lib/apt/lists/*
+
 # --- Create OBS user and allow video access ---
 RUN useradd -m -s /bin/bash obs && usermod -aG video obs && \
     mkdir -p /run/user/1001 && chown obs:obs /run/user/1001
