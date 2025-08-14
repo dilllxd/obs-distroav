@@ -22,9 +22,9 @@ Environment (optional): set in a `.env` next to `compose.yml`
 
 Images on GHCR:
 
-- `ghcr.io/dilllxd/obs-distroav:intel`
-- `ghcr.io/dilllxd/obs-distroav:amd`
-- `ghcr.io/dilllxd/obs-distroav:nvidia`
+- `ghcr.io/dilllxd/obs-distroav:intel-teb-vertical`
+- `ghcr.io/dilllxd/obs-distroav:amd-teb-vertical`
+- `ghcr.io/dilllxd/obs-distroav:nvidia-teb-vertical`
 
 ## Persistence
 
