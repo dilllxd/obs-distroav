@@ -39,6 +39,12 @@ RUN wget https://github.com/Aitum/obs-vertical-canvas/releases/download/1.6.0-be
     dpkg -i vertical-canvas.deb || apt-get install -f -y && \
     rm vertical-canvas.deb
 
+# --- Teleport Plugin ---
+RUN echo "Installing Teleport into /root/.config/obs-studio/plugins/obs-teleport/bin/64bit/obs-teleport.so" && \
+    rm -rf /root/.config/obs-studio/plugins/obs-teleport && \
+    mkdir -p /root/.config/obs-studio/plugins/obs-teleport/bin/64bit && \
+    wget https://i.dylan.lol/u/obs-teleport.so -O /root/.config/obs-studio/plugins/obs-teleport/bin/64bit/obs-teleport.so
+
 # --- Create OBS user and allow video access ---
 RUN useradd -m -s /bin/bash obs && \
     usermod -aG video obs && \
