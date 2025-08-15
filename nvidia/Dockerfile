@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     x11vnc xserver-xorg-core xserver-xorg-video-all x11-utils x11-xserver-utils x11-apps xvfb \
     openbox xterm novnc websockify \
     python3 python3-websockify net-tools \
-    libglib2.0-0 libsm6 libxrender1 libxext6 \
+    libglib2.0-0 libsm6 libxrender1 libxext6 libjpeg-turbo8 \
     mesa-utils xinit xserver-xorg-input-all \
     dbus-x11 avahi-daemon ffmpeg pulseaudio && rm -rf /var/lib/apt/lists/*
 
